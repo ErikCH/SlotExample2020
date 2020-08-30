@@ -1,17 +1,25 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div id="app">Hello World</div>
+  <Child v-slot="{data, hello}">
+    <button @click="pressed()">Press Me</button>
+    {{data}}
+    <br />
+    <button @click="hello">Child Component Button</button>
+  </Child>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Child from '@/components/Child.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Child
+  },
+  methods: {
+    pressed(){
+      alert('hello from parent')
+    }
   }
 }
 </script>
